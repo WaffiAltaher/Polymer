@@ -1,0 +1,62 @@
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../bower_components/polymer/polymer.html" />
+    <link rel="stylesheet" href="../w3css/w3css.css">
+
+
+
+<dom-module id='waffi-element-3'>
+    <template>
+
+        <link rel="stylesheet" href="../w3css/w3css.css">
+
+        <div class="w3-card-4 w3-margin w3-white">
+
+        <div class="w3-container">
+            <slot name="general-desc"></slot>
+            <div class="w3-row">
+                <div class="w3-col m8 s12">
+                    <p><button class="w3-button w3-padding-large w3-white w3-border" onClick="[[_openModal]]"><b>[[buttonText]]</b></button></p>
+                    <!-- Basics basics Modal -->
+                    <div id="BasicsBasics" class="w3-modal">
+                        <div class="w3-modal-content">
+                            <div class="w3-container">
+					  <span onclick="[[_closeModal]]"
+                            class="w3-button w3-display-topright">&times;</span>
+                                <slot name="details-modal"></slot>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </template>
+
+    </template>
+
+</dom-module>
+
+<script>
+HTMLImports.whenReady(function() {
+      Polymer({
+      is:"waffi-element-3",
+      properties: {
+         buttonText: {
+                    type : String,
+                    value: "READ MORE »"
+                     }
+      },
+      _openModal: function(){
+         if (this.$$('.w3-modal')) this.$$('.w3-modal').style.display = 'block'
+      },
+      _closeModal: function(){
+         if (this.$$('.w3-modal')) this.$$('.w3-modal').style.display = ''
+      },
+      attached: function(){
+          this._openModal = this._openModal.bind(this);
+          this._closeModal = this._closeModal.bind(this);
+      }
+
+      })
+      });
+    </script>

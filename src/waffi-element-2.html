@@ -1,0 +1,67 @@
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../bower_components/polymer/polymer.html" />
+    <link rel="stylesheet" href="../w3css/w3css.css">
+
+
+
+<dom-module id='waffi-element-2'>
+    <template>
+
+        <link rel="stylesheet" href="../w3css/w3css.css">
+
+        <div class="w3-card-4 w3-margin w3-white">
+
+        <div class="w3-container">
+            <p>If, like me, you have not done any frontend development for quite some time, chances are you need to refresh your basics.</p>
+            <p>I have done quite a bit of JSP in 2003 (back in the day that was cool), and I can tell you html, javascript and,especially, CSS have changed a lot,
+                so if your experience is as old as mine, (or better yet, if you have no experience) just forget everything you have learned and continue reading,
+                it's a completely new ball game now...
+            </p>
+            <div class="w3-row">
+                <div class="w3-col m8 s12">
+                    <p><button class="w3-button w3-padding-large w3-white w3-border" onClick="[[_openModal]]"><b>READ MORE »</b></button></p>
+                    <!-- Basics basics Modal -->
+                    <div id="BasicsBasics" class="w3-modal">
+                        <div class="w3-modal-content">
+                            <div class="w3-container">
+					  <span onclick="[[_closeModal]]"
+                            class="w3-button w3-display-topright">&times;</span>
+                                <h3>Must reads</h3>
+                                <p>A very good start for you basics is <a class="w3-hover-text-blue" href="https://www.w3schools.com/">W3Schools</a></p>
+                                <p>Below you can find links to some must-read tutorials, this will give you the needed background...</p>
+                                <ul class="">
+                                    <li><p><a class="w3-hover-text-blue" href="https://www.w3schools.com/html/default.asp">HTML tutorial</a>, dont event think about web development if you dont know everything in here</p></li>
+                                    <li><p><a class="w3-hover-text-blue" href="https://www.w3schools.com/js/default.asp">JavaScript tutorial</a>, Duh!</p></li>
+                                    <li><p><a class="w3-hover-text-blue" href="https://www.w3schools.com/css/default.asp">CSS tutorial</a>, an absolute must as well</p></li>
+                                </ul>
+                                <div class="w3-panel w3-round w3-gray"><i class="w3-large w3-margin">!</i><i>You MUST read and understad those tutorials before you proceed...</i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </template>
+
+</dom-module>
+
+<script>
+HTMLImports.whenReady(function() {
+      Polymer({
+      is:"waffi-element-2",
+      _openModal: function(){
+         if (this.$$('.w3-modal')) this.$$('.w3-modal').style.display = 'block'
+      },
+      _closeModal: function(){
+         if (this.$$('.w3-modal')) this.$$('.w3-modal').style.display = ''
+      },
+      attached: function(){
+          this._openModal = this._openModal.bind(this);
+          this._closeModal = this._closeModal.bind(this);
+      }
+
+      })
+      });
+    </script>

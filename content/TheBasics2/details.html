@@ -1,0 +1,27 @@
+<div class="w3-card w3-margin-top">
+    <h3>NodeJS</h3>
+    <h4>What is it?</h4>
+    <p>NodeJS is a runtime for Javascript. This means it is used to run JavaScript on the server side, so you can create backend applications, or REST APIs using Javascript.</p>
+    <h4>So why do I need it in a <i>front end</i> project</h4>
+    <p>Any decent site will consist of more than just static data, this means that chances are your web app will be using some form of API to retrieve data from your backend.
+        Now you still wont need NodeJS for that, but in order to be able to test your application, you will either need to depend on your backend appliction(s), or you need to be able to quickly spin a server
+        that can serve your web application and stub/mock your APIs. This is were NodeJS comes into play.</p>
+    <h3>NPM</h3>
+    <p>NPM for NodeJS is like maven for Java development, it is the package manager that allowes you to define the models that your server side code needs and it will download it automaticaly for you.</p>
+    <p>examples of stuff that you will need to download via npm are bower, karma, protractor, http-server, etc</p>
+    <p><i>*if you dont know what are those, dont worry, some of them are mentioned below, some will be explained later on</i></p><i></i>
+</div>
+
+<div class="w3-card">
+    <h3>Bower</h3>
+    <p>Again, bower is like the maven of Javascript. So how is it different than <i>npm</i>?</p>
+    <p><i>npm</i> is for components that you will need in the server side that you will start while you are <i><b>testing</b></i> your application,
+        while <i>bower</i> is used for dependencies that you wanna use in the browser, stuff like you polymer library, your css libraries and the likes.</p>
+</div>
+
+<div class="w3-card">
+    <h3>Grunt</h3>
+    <p><i>Grunt</i> is a task runner that you use it to automated repeated task, kind of a miniture Jenkins. For example, every time you want to execute all your tests, then you have to issue some commands to start your local nodeJS http server,
+        startup a test suite and maybe upload the test report somewhere, you can configure a grunt job to do all of this for you.</p>
+    <p>Another example is if you use a typed javascript variation, then everytime before you run your app you must <i>compile</i> your typescript into javascript. </p>
+</div>

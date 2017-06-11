@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="import" href="waffi-element-3.html" />
+
+</head>
+<body>
+<waffi-element-3>
+<div slot="general-desc">
+    <p>If, like me, you have not done any frontend development for quite some time, chances are you need to refresh your basics.</p>
+    <p>I have done quite a bit of JSP in 2003 (back in the day that was cool), and I can tell you html, javascript and,especially, CSS have changed a lot,
+        so if your experience is as old as mine, (or better yet, if you have no experience) just forget everything you have learned and continue reading,
+        it's a completely new ball game now...
+    </p>
+</div>
+<div slot="details-modal">
+    <h3>Must reads</h3>
+    <p>A very good start for you basics is <a class="w3-hover-text-blue" href="https://www.w3schools.com/">W3Schools</a></p>
+    <p>Below you can find links to some must-read tutorials, this will give you the needed background...</p>
+    <ul class="">
+        <li><p><a class="w3-hover-text-blue" href="https://www.w3schools.com/html/default.asp">HTML tutorial</a>, dont event think about web development if you dont know everything in here</p></li>
+        <li><p><a class="w3-hover-text-blue" href="https://www.w3schools.com/js/default.asp">JavaScript tutorial</a>, Duh!</p></li>
+        <li><p><a class="w3-hover-text-blue" href="https://www.w3schools.com/css/default.asp">CSS tutorial</a>, an absolute must as well</p></li>
+    </ul>
+    <div class="w3-panel w3-round w3-gray"><i class="w3-large w3-margin">!</i><i>You MUST read and understad those tutorials before you proceed...</i></div>
+</div>
+
+</waffi-element-3>
+<!-- note name conversion from buttonText to button-text -->
+<waffi-element-3 button-text="Custom Button Text">
+    <p slot="general-desc">general stuff</p>
+    <p slot="details-modal">detail stuff</p>
+
+</waffi-element-3>
+</body>

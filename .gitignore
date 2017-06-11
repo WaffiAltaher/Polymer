@@ -2,3 +2,4 @@ node_modules
 typings
 lib
 .idea
+bower_components

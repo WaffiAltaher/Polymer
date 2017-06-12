@@ -1,0 +1,38 @@
+
+    <link rel="import" href="waffi-element-3.html" />
+    <link rel="import" href="content-reader.html" />
+
+
+
+    <dom-module id='content-reader-wrapper'>
+        <template>
+
+    <content-reader   main-data="{{content}}"></content-reader>
+            <p>should show up {{content}} eeee</p>
+<template is="dom-repeat" items="[[content]]" as="singleContent">
+
+
+    <waffi-element-3>
+        <div slot="general-desc">
+            {{singleContent.main}}
+        </div>
+        <div slot="details-modal">
+            {{singleContent.detail}}
+         </div>
+
+    </waffi-element-3>
+
+</template>
+
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+        is: 'content-reader-wrapper',
+        properties: {
+            content:{type: Array, value: []}
+        },
+        attached: function(){Polymer.dom.flush();}
+        });
+
+    </script>

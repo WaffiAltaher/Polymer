@@ -12,59 +12,75 @@
           on-response="readData">
       </iron-ajax>
 
-      <iron-ajax
-              id="contentMainReader"
-              url=""
-              handle-as="text"
-              on-response="readMainContent">
-      </iron-ajax>
+      <template is="dom-repeat" items="[[chapters]]" as="chapter">
+          <iron-ajax
+                  id="[[chapter.main]]"
+                  url=""
+                  handle-as="text"
+                  on-response="readMainContent">
+          </iron-ajax>
+          <iron-ajax
+                  id="[[chapter.detail]]"
+                  url=""
+                  handle-as="text"
+                  on-response="readDetailContent">
+          </iron-ajax>
+          <iron-request id="xhr[[chapter.main]]"></iron-request>
+          <iron-request id="xhr[[chapter.detail]]"></iron-request>
 
-      <iron-ajax
-              id="contentDetailReader"
-              url=""
-              handle-as="text"
-              on-response="readDetailContent">
-      </iron-ajax>
-      <iron-request id="xhr"></iron-request>
 
+      </template>
 
-      [[chapters]]
   </template>
     <script>
         Polymer({
           is : "content-reader",
           properties : {
             chapters : Array,
-            mainData: Object,
-            detailData: Object
-          },
+            mainData: {type:Array,value:[]}
+            },
           readData: function(data){
             var myres = data.detail.response;
-            this.chapters = myres.Chapters;
-            myres.Chapters.forEach(function(curVal){
-            console.log(curVal);
-              this.$.contentMainReader.url = "/content/"+curVal+"/main.html";
-              var requestOptions= this.$.contentMainReader.toRequestOptions()
-              var ddd = this.$.xhr.send(requestOptions);
-               // ddd.then(function(){console.log('then!!!');});
-              //console.log(this.$.contentMainReader.toRequestOptions());
-              //this.$.contentDetailReader.url = "/content/"+curVal+"/details.html";
-              //this.$.contentDetailReader.generateRequest();
+
+            this.chapters = myres.Chapters.reduce((total,ch)=> {
+              total.push({"main": ch, "detail":ch+'detail'});
+              return total;
+            },[]);
+
+            //this is needed so that the array is translated into iron-ajax items
+            Polymer.dom.flush();
+
+            this.chapters.forEach(function(curVal){
+                var mainName = '#'+curVal.main;
+                var xhrName = '#xhr'+curVal.main;
+                    this.$$(mainName).url = "/content/"+curVal.main+"/main.html";
+
+                var mainPromise = this.$$(xhrName).send(this.$$(mainName).toRequestOptions());
+
+                mainPromise.then(function(mainRes){
+                    var mainResponse = mainRes.parseResponse();
+                    var detailName = '#'+curVal.detail;
+                    var xhrdName = '#xhr'+curVal.detail;
+                    this.$$(detailName).url = "/content/"+curVal.main+"/details.html";
+                    var detailPromise = this.$$(xhrdName).send(this.$$(detailName).toRequestOptions());
+                    detailPromise.then(function(detailRes){
+                        var detailResponse= detailRes.parseResponse();
+                        this.mainData.push({
+                           "main" : mainResponse,
+                           "detail" : detailResponse
+                        });
+
+                        var temData = this.mainData;
+                        this.mainData = [];
+                        this.mainData = temData;
+
+                    }.bind(this));
+                }.bind(this));
             },this);
-          },
-
-          readMainContent: function(data) {
-          console.log('main');
-          console.log(data);
-          console.log(data.detail.xhr.response);
-
-
-          },
-          readDetailContent: function(data) {
-          console.log('detail');
-          console.log(data);
 
           }
+
+
         });
     </script>
 </dom-module>

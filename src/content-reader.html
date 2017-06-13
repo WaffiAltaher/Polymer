@@ -7,7 +7,7 @@
       <iron-ajax
           id="catalogueReader"
           auto
-          url="../content/content.json"
+          url="[[rootPath]]content/content.json"
           handle-as="json"
           on-response="readData">
       </iron-ajax>
@@ -28,7 +28,6 @@
           <iron-request id="xhr[[chapter.main]]"></iron-request>
           <iron-request id="xhr[[chapter.detail]]"></iron-request>
 
-
       </template>
 
   </template>
@@ -39,6 +38,7 @@
             chapters : Array,
             mainData: {type:Array,value:[]}
             },
+          created: function() {this.rootPath = this.rootPath.replace("/src","")},
           readData: function(data){
             var myres = data.detail.response;
 
@@ -65,19 +65,14 @@
                     var detailPromise = this.$$(xhrdName).send(this.$$(detailName).toRequestOptions());
                     detailPromise.then(function(detailRes){
                         var detailResponse= detailRes.parseResponse();
-                        this.mainData.push({
+                        this.push('mainData',{
                            "main" : mainResponse,
                            "detail" : detailResponse
                         });
 
-                        var temData = this.mainData;
-                        this.mainData = [];
-                        this.mainData = temData;
-
                     }.bind(this));
                 }.bind(this));
             },this);
-
           }
 
 

@@ -1,5 +1,6 @@
 
-    <link rel="import" href="waffi-element-3.html" />
+<link rel="import" href="waffi-element-3.html" />
+<link rel="import" href="html-injector.html" />
     <link rel="import" href="content-reader.html" />
 
 
@@ -8,16 +9,15 @@
         <template>
 
     <content-reader   main-data="{{content}}"></content-reader>
-            <p>should show up {{content}} eeee</p>
-<template is="dom-repeat" items="[[content]]" as="singleContent">
 
 
+<template is="dom-repeat" items="{{content}}" as="singleContent">
     <waffi-element-3>
         <div slot="general-desc">
-            {{singleContent.main}}
+            <html-injector html="{{singleContent.main}}"></html-injector>
         </div>
         <div slot="details-modal">
-            {{singleContent.detail}}
+            <html-injector html="{{singleContent.detail}}"></html-injector>
          </div>
 
     </waffi-element-3>
@@ -31,8 +31,7 @@
         is: 'content-reader-wrapper',
         properties: {
             content:{type: Array, value: []}
-        },
-        attached: function(){Polymer.dom.flush();}
+        }
         });
 
     </script>

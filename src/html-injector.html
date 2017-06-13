@@ -1,0 +1,25 @@
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+
+
+<dom-module id='html-injector'>
+
+</dom-module>
+
+<script>
+      Polymer({
+      is:"html-injector",
+      properties: {
+        html: {
+          type: String,
+          observer: '_htmlChanged'
+        }
+      },
+      _htmlChanged: function (newHtml) {
+        // WARNING: potential XSS vulnerability, don't do this at home...
+        this.innerHTML = newHtml;
+      }
+      });
+
+    </script>

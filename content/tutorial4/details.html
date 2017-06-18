@@ -1,0 +1,25 @@
+<div class="w3-margin-top">
+<div class="w3-card">
+    <p>
+        <i>Disclaimer</i>: this section is intended as an example to show how multiple tricks are done in polymer, so it has nice examples
+        but the overall solution is poor: dont use this at home, this is tutorial example code that I wrote while learning, not a production grade code
+    </p>
+</div>
+
+    <div>
+        <p>
+            You can read the source code from the usual guthub location. check waffi-element-4-wrapper
+        </p>
+
+        <p>
+             Here I created a different element, content-reader that will read the contents of this website from a backend. As I Am too lazy to create a REST api just for this tutorial,
+            I just read the HTML files directly from the server, but everything will work in the same way when calling JSON, just specfy json instead of html in the handle-as section of the code.
+        </p>
+
+        <p>
+            The contet reader element will read a file: content.json from the backend, that file will tell us which URLs to call in order to get the content.It will the nread all the content and prepare it all in JSON objects that are passed to multiple waffi-element-4 elements.
+        </p>
+
+        <p>This will show you how to invoke an API, how to get multiple polymer elements to interact via data binding, how to add elements based on backend response via dom-repeat, and it has some nice JS Promise tricks!</p>
+    </div>
+</div>

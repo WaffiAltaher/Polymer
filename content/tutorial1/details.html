@@ -1,9 +1,46 @@
 <div class="w3-margin-top">
     <h3>Creating a basic element</h3>
-    <p>Assuming that you read everything in the previous sections, lets get started: navigate to <a class="w3-hover-text-blue" href="www.waffi.nl/src/waffi-element-1.html">this element</a>
-        This is a basic element which you can check out to see a baic polymer element in action
+    <h5><a class="w3-hover-text-blue" href="https://github.com/WaffiAltaher/Polymer/blob/master/src/waffi-element-1.html">Step 1 source code</a></h5>
+    <p>Assuming that you read everything in the previous sections, lets get started: navigate to <a class="w3-hover-text-blue" href="http://www.waffi.nl/src/waffi-element-1.html" target="_blank">this element</a>
+        This is a basic element which you can check out to see a basic polymer element in action
     </p>
-    <p>You can check the source code for it, and for this entire site <a class="w3-hover-text-blue" href="https://github.com/WaffiAltaher/Polymer">here</a></p>
+    <p>You can check the source code for it, and for this entire site <a class="w3-hover-text-blue" href="https://github.com/WaffiAltaher/Polymer" target="_blank">here</a></p>
+
+    <p>Lets start simple, this is a static html polymer element that will show a blog card, with static content.
+    Nothing much, just shows you the basic setup of a Polymer element.
+    What we did here:
+
+    <div class="w3-code notranslate">
+    <p>&lt;dom-module id='waffi-element-1'&gt;</p>
+    <p>    &lt;template&gt;</p>
+    <p>...</p>
+    <p>...</p>
+    <p>&lt;/templat&gt;</p>
+    <p>&lt;script&gt;</p>
+    <p>...</p>
+    <p>...</p>
+    <p>&lt;/script&gt;</p>
+</div>
+
+    <p>The <b>dom-module</b> part tells the browser that there is an element called waffi-element-1.</p>
+    <p>The <b>template</b> part defines the html contents of this element</p>
+    <p>The <b>script</b> part is used to specify properties and behaviour of this element.</p>
+
+    </p>
+
+    <p>Code should be easy to navigate, few things to note:
+    <ul>
+    <li>Webcomponent-lite.js is imported, otherwise this will only work on Chrome</li>
+    <li>An element will not see any CSS classes defined outside of itself, not will it affect anything outside, so every element must define/import its own styles</li>
+    <li>Check the function bindings done in attached function. This will make sure that using <b>this</b> in
+    the event listeners will always give consistent results</li>
+    <li>The sample defines the element in the same html page that it is using it, this is not a good practice, see next part for a moe appropriate example</li>
+    </ul>
+
+<p> If you feel lost reading this, make sure you go through the links mentioned in Polymer Basics section, especially the sitepoint tutorial  </p>
+
+    </p>
+
 
 
 

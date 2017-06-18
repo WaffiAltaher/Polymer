@@ -1,12 +1,14 @@
 
 <link rel="import" href="waffi-element-3.html" />
 <link rel="import" href="html-injector.html" />
+
     <link rel="import" href="content-reader.html" />
 
 
 
     <dom-module id='content-reader-wrapper'>
         <template>
+            <link rel="stylesheet" href="w3css/w3css.css">
 
     <content-reader   main-data="{{content}}"></content-reader>
 
@@ -31,7 +33,7 @@
         is: 'content-reader-wrapper',
         properties: {
             content:{type: Array, value: []}
-        },created:function(){debugger}
+        }
         });
 
     </script>

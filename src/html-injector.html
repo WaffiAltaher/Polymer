@@ -18,7 +18,7 @@
       },
       _htmlChanged: function (newHtml) {
         // WARNING: potential XSS vulnerability, don't do this at home...
-        this.innerHTML = newHtml;
+        Polymer.dom(this).node.innerHTML = newHtml;
       }
       });
 

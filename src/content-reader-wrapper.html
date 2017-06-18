@@ -8,7 +8,7 @@
 
     <dom-module id='content-reader-wrapper'>
         <template>
-            <link rel="stylesheet" href="w3css/w3css.css">
+            <link rel="stylesheet" href="[[rootPath]]w3css/w3css.css">
 
     <content-reader   main-data="{{content}}"></content-reader>
 
@@ -33,7 +33,9 @@
         is: 'content-reader-wrapper',
         properties: {
             content:{type: Array, value: []}
-        }
+        },
+              created: function() {this.rootPath = this.rootPath.replace("/src","")}
+
         });
 
     </script>

@@ -4,10 +4,10 @@
 
 
 
-<dom-module id='waffi-element-3'>
+<dom-module id='waffi-element-4'>
     <template>
 
-        <link rel="stylesheet" href="../w3css/w3css.css">
+        <link rel="stylesheet" href="[[rootPath]]w3css/w3css.css">
 
         <div class="w3-card-4 w3-margin w3-white">
 
@@ -47,6 +47,7 @@ HTMLImports.whenReady(function() {
                      },
          content: Array
       },
+      created: function() {this.rootPath = this.rootPath.replace("/src","")},
       _openModal: function(){
          if (this.$$('.w3-modal')) this.$$('.w3-modal').style.display = 'block'
       },

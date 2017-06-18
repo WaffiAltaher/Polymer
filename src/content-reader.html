@@ -51,30 +51,39 @@
             //this is needed so that the array is translated into iron-ajax items
             Polymer.dom.flush();
 
-            //var sequence = Pro
+            var sequence = Promise.resolve();
 
             this.chapters.forEach(function(curVal){
                 var mainName = '#'+curVal.main;
                 var xhrName = '#xhr'+curVal.main;
                 this.$$(mainName).url = "/content/"+curVal.main+"/main.html";
 
-                var mainPromise = this.$$(xhrName).send(this.$$(mainName).toRequestOptions());
+                sequence = sequence.then(function(){
+                    var mainPromise = this.$$(xhrName).send(this.$$(mainName).toRequestOptions());
 
-                mainPromise.then(function(mainRes){
-                    var mainResponse = mainRes.parseResponse();
-                    var detailName = '#'+curVal.detail;
-                    var xhrdName = '#xhr'+curVal.detail;
-                    this.$$(detailName).url = "/content/"+curVal.main+"/details.html";
-                    var detailPromise = this.$$(xhrdName).send(this.$$(detailName).toRequestOptions());
-                    detailPromise.then(function(detailRes){
-                        var detailResponse= detailRes.parseResponse();
-                        this.push('mainData',{
-                           "main" : mainResponse,
-                           "detail" : detailResponse
-                        });
+                    mainPromise.then(function(mainRes){
+                        var mainResponse = mainRes.parseResponse();
+                        var detailName = '#'+curVal.detail;
+                        var xhrdName = '#xhr'+curVal.detail;
+                        this.$$(detailName).url = "/content/"+curVal.main+"/details.html";
+                        var detailPromise = this.$$(xhrdName).send(this.$$(detailName).toRequestOptions());
+                        detailPromise.then(function(detailRes){
+                            var detailResponse= detailRes.parseResponse();
+                            this.push('mainData',{
+                               "main" : mainResponse,
+                               "detail" : detailResponse
+                            });
 
+                        }.bind(this));
                     }.bind(this));
+
+
                 }.bind(this));
+
+
+
+
+
             },this);
           }
 

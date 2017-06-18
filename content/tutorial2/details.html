@@ -1,0 +1,47 @@
+<div class="w3-margin-top">
+    <h3>Importing a basic element</h3>
+    <h5><a class="w3-hover-text-blue" href="https://github.com/WaffiAltaher/Polymer/blob/master/src/waffi-element-2.html" target="_blank">Step 2 source code</a></h5>
+    <p>Navigate to <a class="w3-hover-text-blue" href="http://www.waffi.nl/src/waffi-element-2-wrapper.html" target="_blank">this element</a>
+        The content is still exactly the same, its just now the element is isolated in its own file, and you can import and use it from any page
+    </p>
+
+
+    <p>Now we have introduced a new page, waffi-element-2-wrapper, which is importing and using waffi_element-2</p>
+    <p> To define an element, we just do exactly what we did in the previous example, just in a seperate html file. </p>
+    <p>notice that in this file, we dont need the html definition tag, nor the header or body tags</p>
+    <div class="w3-code">
+        <p>&lt;link rel=&quot;import&quot; href=&quot;../bower_components/polymer/polymer.html&quot; /&gt;</p>
+        <p>        &lt;link rel=&quot;stylesheet&quot; href=&quot;../w3css/w3css.css&quot;&gt;</p>
+        <p>&lt;dom-module id='waffi-element-2'&gt;</p>
+        <p>&lt;template&gt;</p>
+        <p>&lt;link rel=&quot;stylesheet&quot; href=&quot;../w3css/w3css.css&quot;&gt;</p>
+        <p>&lt;div class=&quot;w3-card-4 w3-margin w3-white&quot;&gt;</p>
+        <p>.</p>
+        <p>.</p>
+        <p>&lt;/div&gt;</p>
+        <p>&lt;/template&gt;</p>
+        <p>&lt;/dom-module&gt;</p>
+        <p>&lt;script&gt;</p>
+        <p>.</p>
+        <p>.</p>
+        <p>&lt;/script&gt;</p>
+
+    </div>
+    <p>
+        In the main document, we just import the defined element and then we can use it:
+    </p>
+
+    <div class="w3-code">
+        &lt;link rel=&quot;import&quot; href=&quot;waffi-element-2.html&quot; /&gt;
+    </div>
+
+    <p> the page body is quite simple, just adding one element</p>
+    <div class="w3-code">
+    &lt;body&gt;
+    &lt;waffi-element-2&gt;&lt;/waffi-element-2&gt;
+    &lt;/body&gt;
+    </div>
+
+    <p>You custom element can be as simple as our example, or can be as complex as you want, using it is just as easy</p>
+
+</div>

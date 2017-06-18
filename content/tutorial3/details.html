@@ -1,0 +1,58 @@
+<div class="w3-margin-top">
+    <h3>Data Binding</h3>
+    <h5><a class="w3-hover-text-blue" href="https://github.com/WaffiAltaher/Polymer/blob/master/src/waffi-element-3.html" target="_blank">Step 3 source code</a></h5>
+    <p>Navigate to <a class="w3-hover-text-blue" href="http://www.waffi.nl/src/waffi-element-3-wrapper.html" target="_blank">this element</a>
+        We saw how easy it was to import and use a custom element, but now we will see how to interact with the element, feed it some data and get some data back
+    </p>
+    <p>
+        First, lets have a look at the element we have so far, its a nice simple example, but not really <i>real life</i> example.
+    </p>
+    <p>Custom element should be a bit customized, and it should encapsulate some sort of <b><i>reusable</i></b> fuctionality</p>
+    <p>Looking at our example, its does indeed represent our data in a nice way, but as long as the data is contained <i>inside</i> the element, there is little to this element</p>
+    <p>To pass data in (and out) of your element, you have two ways, depending on what sort of data</p>
+    <ul>
+        <li>Data Binding: if you need to pass row data that you will handle inside the element, data binding is the way. You can pass any JS friendly data form, including Object</li>
+        <li>using <b>slot</b>: if you need to pass entire <i>html content</i> to be represented inside the custome element (like our example), then you can use this</li>
+    </ul>
+
+    <p>
+        Our element has two main parts: the main part where the main description goes, and the details popup modal where all the details are explained.
+        We have the custom element taking care of the styling and the modal window creation/setup, while the user of this element can still feed it with whatever data he might like.
+        This is done using <b>slot</b> tag: in the element we just use:
+    </p>
+    <div class="w3-code">
+    <p>&nbsp;&nbsp;.</p>
+    <p>&lt;div class=&quot;w3-container&quot;&gt;</p>
+    <p>&nbsp;&nbsp;&lt;slot name=&quot;general-desc&quot;&gt;&lt;/slot&gt;</p>
+    <p>&nbsp;&nbsp;&lt;div class=&quot;w3-row&quot;&gt;</p>
+    <p>&nbsp;&nbsp;.</p>
+    </div>
+
+    <p>When we use this element, its up to the user to provide the contents of this slot:</p>
+
+    <div class="w3-code">
+        &lt;p slot=&quot;general-desc&quot;&gt;general stuff&lt;/p&gt;
+    </div>
+    <p>the content of slot does not have to be a text, whatever you pass with the attribute slot will be allocated in that section: </p>
+
+    <div class="w3-code">
+        <p>&lt;div slot=&quot;details-modal&quot;&gt;</p>
+        <p>&nbsp;&nbsp;&lt;h3&gt;Must reads&lt;/h3&gt;</p>
+        <p>&nbsp;&nbsp;.</p>
+        <p>&nbsp;&nbsp;.</p>
+        <p>&lt;/div&gt;</p>
+    </div>
+
+    <p>This shows how to controle the contents of the element, but thats not always enough, say that we need to controle the text in the button that will open the details modal,
+    passing that as html wont work as that part of the element is not exposed a a <b>slot</b>, so we will have to find another way: Data bindings</p>
+
+    <p>In the script section, when we invoke the Polymer function to setup our element, we can define properties, those are properties of the custom element, which can be any object. </p>
+    <p>Property value can be set by many means, refer to the polymer documentation for details, here we are setting the propery value when we use the element in our wrapper page: </p>
+    <div class="w3-code">&lt;waffi-element-3 button-text=&quot;Custom Button Text&quot;&gt;
+    </div>
+
+    <p> In the element definition, we can use this value to fill the text for the button:</p>
+    <div class="w3-code">&lt;p&gt;&lt;button class=&quot;w3-button w3-padding-large w3-white w3-border&quot; onClick=&quot;[[_openModal]]&quot;&gt;&lt;b&gt;<b style="color:red">[[buttonText]]</b>&lt;/b&gt;&lt;/button&gt;&lt;/p&gt;</div>
+
+    <p>Also note that we set a default value for this property, so the default text will be shown if the user does not specify anything</p>
+</div>

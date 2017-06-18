@@ -31,8 +31,6 @@
         </div>
     </template>
 
-    </template>
-
 </dom-module>
 
 <script>
@@ -43,7 +41,11 @@ HTMLImports.whenReady(function() {
          buttonText: {
                     type : String,
                     value: "READ MORE »"
-                     }
+                     },
+         someOutputData: {
+                    type: String,
+                    value: "Data that the custom element will spit out, either by generating it, querying it using Ajax, or asking the user to enter it"
+                    }
       },
       created: function() {this.rootPath = this.rootPath.replace("/src","")},
       _openModal: function(){

@@ -4,12 +4,14 @@
   "description": "my take on polymer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "http-server -c1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-exec": "^2.0.0"
+    "grunt-exec": "^2.0.0",
+    "http-server": "^0.10.0"
   }
 }

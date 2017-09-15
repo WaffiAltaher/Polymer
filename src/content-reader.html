@@ -41,6 +41,7 @@
             },
           created: function() {this.rootPath = this.rootPath.replace("/src","")},
           readData: function(data){
+
             var myres = data.detail.response;
 
             this.chapters = myres.Chapters.reduce((total,ch)=> {
@@ -57,11 +58,10 @@
                 var mainName = '#'+curVal.main;
                 var xhrName = '#xhr'+curVal.main;
                 this.$$(mainName).url = "/content/"+curVal.main+"/main.html";
-
                 sequence = sequence.then(function(){
                     var mainPromise = this.$$(xhrName).send(this.$$(mainName).toRequestOptions());
 
-                    mainPromise.then(function(mainRes){
+                    return mainPromise.then(function(mainRes){
                         var mainResponse = mainRes.parseResponse();
                         var detailName = '#'+curVal.detail;
                         var xhrdName = '#xhr'+curVal.detail;
